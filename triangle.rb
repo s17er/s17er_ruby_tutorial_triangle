@@ -15,9 +15,9 @@ MESSAGE = {
 class Triangle
 	def self.triangle_type(a, b, c)
 		if is_triangle(a, b, c)
-			if is_eqilateral_triangle(a, b, c)
+			if is_equal_all_sides(a, b, c)
 				TriangleType::Equilateral
-			elsif is_isosceles_triangle(a, b, c)
+			elsif is_equal_more_than_2sides(a, b, c)
 				TriangleType::Isosceles
 			else
 				TriangleType::Scalene
@@ -32,14 +32,14 @@ class Triangle
 	end
 
 	def self.is_triangle(a, b, c) 
-		a + b > c && b + c > a && c + a > b
+		[a,b,c].min() > 0 && a + b > c && b + c > a && c + a > b
 	end
 
-	def self.is_eqilateral_triangle(a, b, c)
+	def self.is_equal_all_sides(a, b, c)
 		a == b && b == c && c == a
 	end
 
-	def self.is_isosceles_triangle(a, b, c)
+	def self.is_equal_more_than_2sides(a, b, c)
 		a == b || b == c || c == a
 	end
 
